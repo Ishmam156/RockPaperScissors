@@ -1,0 +1,51 @@
+body {
+  font-family: "Roboto", serif;
+  background-color: #fff3ec;
+}
+
+#container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 80vh;
+  text-align: center;
+}
+
+h1 {
+  font-size: x-large;
+  margin: 50px;
+  font-weight: 900;
+  color: #000000;
+}
+
+h3 {
+  font-size: large;
+  margin: 25px;
+  font-weight: 700;
+  color: #000000;
+}
+
+p {
+  font-size: medium;
+  margin: 10px;
+  font-weight: 100;
+  color: #6db3b4;
+}
+
+button {
+  font-family: "Roboto", serif;
+  background-color: #e0cec3;
+  color: #000000;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #fff3ec;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+}
