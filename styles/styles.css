@@ -30,7 +30,7 @@ p {
   font-size: medium;
   margin: 10px;
   font-weight: 100;
-  color: #6db3b4;
+  color: #4a8a8b;
 }
 
 button {
@@ -40,10 +40,11 @@ button {
   border: none;
   padding: 10px;
   cursor: pointer;
+  border-radius: 5px;
 }
 
 button:hover {
-  background-color: #fff3ec;
+  background-color: #f5f0ed;
   border: none;
   padding: 10px;
   cursor: pointer;

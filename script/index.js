@@ -58,7 +58,7 @@ function playRPS(humanInput, computerInput) {
 function game() {
     // Introductory messages
     alert('Welcome to a challenging game of Rock, Paper and Scissors!')
-    alert("Let's get started, shall we?")
+    alert("Let's get started, shall we? First to 5 rounds wins!")
 
     // Reset game if restarting
     numberOfRounds = 0
@@ -69,28 +69,24 @@ function game() {
 
     // Run RPS on loop till someone reaches score of 5
     while (!gameOver) {
-        // Keep track of rounds
-        console.log('Rounds won by Human: ' + humanWins)
-        console.log('Rounds won by Computer: ' + computerWins)
-        console.log('Tota number of rounds player: ' + numberOfRounds)
         // Get human input and play game
         const humanInput = prompt('Select between: Rock, Paper and Scissors!')
         const result = playRPS(humanInput, computerPlay())
-        alert(result)
+        alert(`${result}\n\nHuman Wins: ${humanWins}\nComputer Wins: ${computerWins}\nTotal Rounds Played: ${numberOfRounds}`)
 
         // Check for winner to stop loop
         if (humanWins === 5 || computerWins === 5) {
             gameOver = true
             if (humanWins === 5) {
-                winner = 'Human'
+                winner = 'Congratulations, you! That was some great playing!'
             } else {
-                winner = 'Computer'
+                winner = 'Tough Luck! You played pretty well!'
             }
         }
     }
 
     // Ask player for replaying of game or not
-    alert(`Congratulations, ${winner}, that was some great playing!`)    
+    alert(winner)    
     const playDecision = prompt('Say Yes if you want to start again and anything else to stop')
 
     if (playDecision.toLowerCase() === 'yes') {
