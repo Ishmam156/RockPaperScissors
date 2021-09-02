@@ -1,14 +1,38 @@
 // Global game variables
 const gameOptions = ['rock', 'paper', 'scissors']
-let numberOfRounds = 0
 let humanWins = 0
 let computerWins = 0
-let gameOver = false
-let winner = null
+let gameover = false
 
 // Generate computer choice randomly
 function computerPlay() {
     return gameOptions[Math.floor(Math.random() * gameOptions.length)]
+}
+
+// Modify the DOM based on whether we have a winner
+function winnerCheck() {
+    
+    if (humanWins === 5 || computerWins === 5) {
+        
+        // Clear game playing DOM elements
+        gameover = true
+        let winner = null
+        document.getElementById('gameOptions').innerHTML = ''
+        document.getElementById('result').innerHTML = ''
+        
+        if (humanWins === 5) {
+            winner = 'Congratulations, you! That was some great playing!'
+            document.getElementById('humanScoreMain').style.background = 'rgb(127, 127, 127)'
+        
+        } else {
+            winner = 'Tough Luck! You played pretty well!'
+            document.getElementById('computerScoreMain').style.background = 'rgb(127, 127, 127)'
+        }
+        
+        // Display winner and reset button
+        document.getElementById('mainInstruction').innerText = winner
+        document.getElementById('display').classList.toggle('show')
+    }   
 }
 
 // Play Single game of RPS
@@ -20,6 +44,12 @@ function playRPS(humanInput, computerInput) {
     if (!gameOptions.includes(humanInput)) {
         return "That's not a valid move! We are playing Rock, Paper, Scissors, right?!"
     }
+
+    // Add computer move to DOM
+    const computerMoveDisplay = document.getElementById('computerMove')
+    computerMoveDisplay.innerText = computerInput
+    computerMoveDisplay.style.color = 'white'
+    computerMoveDisplay.style.fontWeight = '900'
 
     const winningChoices = {
         'rock' : {      // Rock beats Scissors
@@ -36,65 +66,46 @@ function playRPS(humanInput, computerInput) {
         },
     }
 
-    // Keep track of rounds
-    numberOfRounds++
-
     // Check for a draw
     if (humanInput === computerInput) {
         return "No one wins! It's a draw :("
     }
 
+    let winnerText
+
     // Check which combination has taken place and find winner accordingly
     if (winningChoices[humanInput][computerInput] > 0) {
         humanWins++
-        return `You win! ${humanInput} beats ${computerInput} :D`
+        document.getElementById('humanScore').innerText = humanWins
+        winnerText = `You win! ${humanInput} beats ${computerInput} :D`
     } else {
         computerWins++
-        return `You lose! ${computerInput} beats ${humanInput} :'(`
+        document.getElementById('computerScore').innerText = computerWins
+        winnerText = `You lose! ${computerInput} beats ${humanInput} :'(`
     }
+
+    winnerCheck()
+
+    return winnerText
 }
 
-// Main Game Loop
-function game() {
-    // Introductory messages
-    alert('Welcome to a challenging game of Rock, Paper and Scissors!')
-    alert("Let's get started, shall we? First to 5 rounds wins!")
+// Add game play functionality to button in DOM looping over gameoptions
+gameOptions.forEach(option => {
+    
+    document.getElementById(option).addEventListener('click', () => {
+        const result = playRPS(option, computerPlay())
 
-    // Reset game if restarting
-    numberOfRounds = 0
-    humanWins = 0
-    computerWins = 0
-    gameOver = false
-    winner = null
-
-    // Run RPS on loop till someone reaches score of 5
-    while (!gameOver) {
-        // Get human input and play game
-        const humanInput = prompt('Select between: Rock, Paper and Scissors!')
-        const result = playRPS(humanInput, computerPlay())
-        alert(`${result}\n\nHuman Wins: ${humanWins}\nComputer Wins: ${computerWins}\nTotal Rounds Played: ${numberOfRounds}`)
-
-        // Check for winner to stop loop
-        if (humanWins === 5 || computerWins === 5) {
-            gameOver = true
-            if (humanWins === 5) {
-                winner = 'Congratulations, you! That was some great playing!'
-            } else {
-                winner = 'Tough Luck! You played pretty well!'
+        if (!gameover) {
+            const gameResult = document.getElementById('gameResult')
+            gameResult.innerText = result
+        
+            if (!gameResult.style.backgroundColor) {
+                document.getElementById('gameResult').style.backgroundColor = 'rgb(127, 127, 127)'
             }
         }
-    }
+    })
+    
+})
 
-    // Ask player for replaying of game or not
-    alert(winner)    
-    const playDecision = prompt("Type 'Yes' if you want to start again and anything else to stop.")
-
-    if (playDecision.toLowerCase() === 'yes') {
-        game()
-    } else {
-        alert(`Thank you for playing!`)    
-    }
-}
-
-// Add game play functionality to button in DOM
-document.querySelector('button').addEventListener('click', () => game())
+// Adding Reset Button to game
+document.getElementById('resetGame').addEventListener('click', () => window.location.reload())

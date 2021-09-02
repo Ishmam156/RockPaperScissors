@@ -17,12 +17,58 @@
 
 <body>
     <div id='container'>
-        <h1>This is a Rock, Paper & Scissors Game!</h1>
-        <p>Don't get startled if no game is seen on this page as the game will be played on the console and through
-            alerts ^_^</p>
-        <p>Sounds complicated? It really isn't!</p>
-        <h3>Click the button below to start the game ^_^</h3>
-        <button>Let's Play!</button>
+        <h1>Welcome to Rock, Paper & Scissors!</h1>
+        <p id='mainInstruction'>First to score 5 wins!</p>
+        <div id='gameOptions'>
+            <div id="rock" class='imageOptions'>
+                <img src="images/rock.png" alt="rock">
+                <p>Rock</p>
+            </div>
+            <div id="paper" class='imageOptions'>
+                <img src="images/paper.png" alt="paper">
+                <p>Paper</p>
+            </div>
+            <div id="scissors" class='imageOptions'>
+                <img src="images/paper.png" alt="scissors">
+                <p>Scissors</p>
+            </div>
+        </div>
+        <div id='gameScores'>
+            <div class='scoreDisplay' id='humanScoreMain'>
+                <div>
+                    Human
+                </div>
+                <div class='score' id='humanScore'>
+                    0
+                </div>
+            </div>
+            <div class='scoreDisplay' id='computerScoreMain'>
+                <div class='score' id='computerScore'>
+                    0
+                </div>
+                <div>
+                    Computer
+                </div>
+            </div>
+        </div>
+        <div id='result'>
+            <div class="scoreDisplay">
+                <div>
+                    Computer Choice:
+                </div>
+                <div id='computerMove'>
+
+                </div>
+            </div>
+            <div class="scoreDisplay" id='gameResult'>
+                Make a choice to start the game!
+            </div>
+        </div>
+        <div id="display" class='show'>
+            <button id='resetGame'>
+                Start Again?
+            </button>
+        </div>
     </div>
     <script src="script/index.js"></script>
 </body>
