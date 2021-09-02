@@ -1,6 +1,6 @@
-# Rock, Paper & Scissors - Console
+# Rock, Paper & Scissors
 
-A simple JS console based Rock, Paper & Scissors game.
+A simple JS game of Rock, Paper & Scissors played in the browser.
 
 ## Live Link
 
@@ -10,7 +10,7 @@ You can check out the webpage [here](https://ishmam156.github.io/RockPaperScisso
 
 ##### Home Page
 
-![Webpage Screenshot](https://i.imgur.com/nOib4OK.png)
+![Webpage Screenshot](https://i.imgur.com/fzRuTxv.png)
 
 ## Tech Stack
 
