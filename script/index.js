@@ -23,16 +23,16 @@ function playRPS(humanInput, computerInput) {
 
     const winningChoices = {
         'rock' : {      // Rock beats Scissors
-            'paper': -1,
             'scissors': 1,
+            'paper': -1,
         },
         'paper' : {     // Paper beats Rock
             'rock': 1,
             'scissors': -1,
         },
         'scissors' : {   // Scissors beats Paper
-            'rock': -1,
             'paper': 1,
+            'rock': -1,
         },
     }
 
@@ -87,7 +87,7 @@ function game() {
 
     // Ask player for replaying of game or not
     alert(winner)    
-    const playDecision = prompt('Say Yes if you want to start again and anything else to stop')
+    const playDecision = prompt("Type 'Yes' if you want to start again and anything else to stop.")
 
     if (playDecision.toLowerCase() === 'yes') {
         game()
