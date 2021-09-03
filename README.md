@@ -4,7 +4,7 @@ A simple JS game of Rock, Paper & Scissors played in the browser.
 
 ## Live Link
 
-You can check out the webpage [here](https://ishmam156.github.io/RockPaperScissors-Console/):
+You can check out the webpage [here](https://ishmam156.github.io/RockPaperScissors):
 
 ## Screenshots
 
